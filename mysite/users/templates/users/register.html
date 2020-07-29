@@ -1,0 +1,41 @@
+{% extends 'food/base.html'%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+{% block body %}
+ <div class="container">
+     <div class="row">
+         <div class="col-md-4 offset-md-4">
+             <div class="card">
+                 <div class="card-header text-white bg-info">
+                     <div class="card-title">
+                         Registration
+                     </div>
+                 </div>
+                 <form method="POST">
+                 {%csrf_token%}
+                 {% for field in form%}
+                 <div class="form-group">
+                 {{field.name}}
+                     <br>
+                 {{field}}
+                 </div>
+                 {% endfor %}
+                <button type="submit" class="btn btn-info">Sign Up</button>
+
+                 </form>
+             </div>
+         </div>
+     </div>
+ </div>
+
+<
+{% endblock %}
+
+</body>
+</html>

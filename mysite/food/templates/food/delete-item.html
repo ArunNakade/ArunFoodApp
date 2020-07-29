@@ -1,0 +1,26 @@
+{% extends 'food/base.html' %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete {{item}}</title>
+</head>
+<body>
+{% block body %}
+<form method="POST">
+    {%csrf_token%}
+    <p>Aro you sure you want to delete "{{item}}"? </p>
+    <div class="row">
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-info"> Confirm </button>
+        </div>
+         <div class="col-md-4">
+            <a href="{% url 'food:detail' item.id%}" class="btn btn-info"> Cancel </a>
+        </div>
+
+    </div>
+
+</form>
+{%endblock%}
+</body>
+</html>
