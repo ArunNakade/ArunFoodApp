@@ -20,10 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's=4(=pmz*kpgkosz_7@04gkc#e+isx#dytdv#mwat&p)fxi%&c'
+#SECRET_KEY = 's=4(=pmz*kpgkosz_7@04gkc#e+isx#dytdv#mwat&p)fxi%&c'
+SECRET_KEY = config('SECRET_KEY')DEBUG = config('DEBUG', default=False, cast=bool)
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -76,14 +79,20 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#DATABASES = {
+   # 'default': {
+    #    'ENGINE': 'django.db.backends.postgresql',
+    #    'NAME': 'foodappdb',
+    #    'USER': 'postgres',
+    #    'PASSWORD': 'Arun@1992',
+     #   'HOST': 'localhost'
+    #}
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'foodappdb',
-        'USER': 'postgres',
-        'PASSWORD': 'Arun@1992',
-        'HOST': 'localhost'
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 # Password validation
