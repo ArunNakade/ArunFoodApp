@@ -14,9 +14,8 @@ class ItemAdmin(admin.ModelAdmin):
     change_username_to_default.short_description = 'default_user'
     list_display = ['user_name','item_name','item_desc','item_price','item_image']
     search_fields = ('item_name','item_desc')
-    actions = ['change_username_to_default',]
-    fields =['user_name','item_name','item_price']
-    list_editable = ['item_name','item_price','item_image']
+    
+    
 
 
 admin.site.register(Item,ItemAdmin)
